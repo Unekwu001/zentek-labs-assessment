@@ -32,7 +32,7 @@ namespace Api.Controllers
         {
             try
             {
-                var created = await _productService.CreateAsync(request, CurrentUserId);
+                var created = await _productService.CreateAsync(request, CurrentUserEmail, CurrentUserId);
                 
                 _logger.LogInformation("Product created successfully: {@Product}", created);
 

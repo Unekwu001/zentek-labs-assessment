@@ -5,7 +5,7 @@ namespace Core.Services.ProductServices
 {
     public interface IProductService
     {
-        Task<Product> CreateAsync(CreateProductDto dto, Guid userId);
+        Task<Product> CreateAsync(CreateProductDto dto, string sellerEmail, Guid sellerId);
         Task<IEnumerable<Product>> GetByColourAsync(string colour);
         Task<(IEnumerable<Product> Items, int TotalCount)> GetPagedAsync(
         int pageNumber,

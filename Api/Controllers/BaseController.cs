@@ -13,14 +13,28 @@ namespace Api.Controllers
     [Authorize]
     public class BaseController : ControllerBase
     {
+        protected string CurrentUserEmail
+        {
+            get
+            {
+                var email = User.FindFirst(ClaimTypes.Email)?.Value;
+
+                if (string.IsNullOrWhiteSpace(email))
+                    throw new UnauthorizedAccessException("Logged in user email not found in token");
+
+                return email;
+            }
+        }
+
+
         protected Guid CurrentUserId
         {
             get
             {
-                var userId = User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-                if (string.IsNullOrEmpty(userId) || !Guid.TryParse(userId, out var parsedId))
-                    throw new UnauthorizedAccessException("UserId not found in token");
+                if (string.IsNullOrWhiteSpace(userId) || !Guid.TryParse(userId, out var parsedId))
+                    throw new UnauthorizedAccessException("Logged in user ID not found in token");
 
                 return parsedId;
             }

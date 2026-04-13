@@ -171,7 +171,7 @@ namespace Core.Repos.ProductRepositories
             // Filtering
             if (!string.IsNullOrWhiteSpace(colour))
             {
-                query = query.Where(p => p.Colour.Equals(colour, StringComparison.OrdinalIgnoreCase));
+               query = query.Where(p => p.Colour == colour.ToLower());
             }
 
             if (minPrice.HasValue)

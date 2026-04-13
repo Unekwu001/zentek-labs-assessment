@@ -15,5 +15,6 @@ namespace Data.Models
         public int StockQuantity { get; set; } 
         public string? ImageUrl { get; set; } 
         public Guid SellerId {  get; set; }
+        public required string SellerEmail { get; set; } 
     }
 }

@@ -20,7 +20,7 @@ namespace Core.Services.ProductServices
 
 
 
-        public async Task<Product> CreateAsync(CreateProductDto dto, Guid userId)
+        public async Task<Product> CreateAsync(CreateProductDto dto, string sellerEmail, Guid sellerId)
         {
             if (dto.Price <= 0)
                 throw new ValidationException("Price must be greater than zero");
@@ -36,8 +36,9 @@ namespace Core.Services.ProductServices
                 StockQuantity = dto.StockQuantity,
                 Colour = dto.Colour ?? string.Empty,
                 ImageUrl = dto.ImageUrl ?? string.Empty,
-                SellerId = userId,
-                CurrencyCode = "USD"
+                SellerEmail = sellerEmail,
+                CurrencyCode = "USD",
+                SellerId = sellerId
             };
 
             var createdProduct = await _productRepo.AddAsync(product);
