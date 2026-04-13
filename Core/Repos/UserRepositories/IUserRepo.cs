@@ -1,6 +1,6 @@
 ﻿using Data.Models;
 
-namespace Core.UserRepositories
+namespace Core.Repos.UserRepositories
 {
     public interface IUserRepo
     {

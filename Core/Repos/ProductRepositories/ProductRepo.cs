@@ -2,7 +2,7 @@
 using Data.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Core.ProductRepositories
+namespace Core.Repos.ProductRepositories
 {
 
     public class ProductRepo : IProductRepo

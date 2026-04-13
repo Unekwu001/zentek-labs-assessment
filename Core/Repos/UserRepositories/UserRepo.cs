@@ -2,7 +2,7 @@
 using Data.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Core.UserRepositories
+namespace Core.Repos.UserRepositories
 {
     public class UserRepo : IUserRepo
     {
