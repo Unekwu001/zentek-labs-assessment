@@ -59,3 +59,7 @@ Claims included:
   "colour": "black",
   "imageUrl": "https://example.com/image.jpg"
 }
+
+
+**
+NOTE THAT:** The architectural design file is named "**products_microservices_architecture_clean.pdf**"
