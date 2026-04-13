@@ -1,13 +1,11 @@
-﻿using Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Common.Dtos;
+using Data.Models;
 
 namespace Core.Services.ProductServices
 {
-    internal interface IProductService
+    public interface IProductService
     {
-        Task<Product> CreateAsync(Product product);
+        Task<Product> CreateAsync(CreateProductDto dto, Guid userId);
         Task<IEnumerable<Product>> GetByColourAsync(string colour);
         Task<(IEnumerable<Product> Items, int TotalCount)> GetPagedAsync(
         int pageNumber,

@@ -5,7 +5,9 @@ namespace Common.Enums
     {
         Guest = 1,
         BasicUser = 2,
-        Admin = 3,
-        SuperAdmin = 4
+        Seller = 3,
+        Buyer = 4,
+        Admin = 5,
+        SuperAdmin = 6
     }
 }

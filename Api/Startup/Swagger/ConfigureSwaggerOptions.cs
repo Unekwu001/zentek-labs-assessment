@@ -44,8 +44,7 @@ You **must** first authenticate with your received token, then use that token he
 
                 var docDescription =
                     SwaggerIntro
-                    + (description.IsDeprecated ? DeprecatedNotice : string.Empty)
-                    + "API for Products";
+                    + (description.IsDeprecated ? DeprecatedNotice : string.Empty);
 
                 options.SwaggerDoc(groupName, new OpenApiInfo
                 {

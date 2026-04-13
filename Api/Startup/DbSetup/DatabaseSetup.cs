@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Data.AppDbContext;
+using Data.ApplicationDbContext;
 using Data.Interceptors;
 
 namespace Api.Startup.DbSetup
@@ -33,6 +33,15 @@ namespace Api.Startup.DbSetup
             return services;
         }
 
+
+            public static void ApplyDatabaseMigrations(this WebApplication app)
+            {
+                using (var scope = app.Services.CreateScope())
+                {
+                    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+                    dbContext.Database.Migrate();
+                }
+            }
 
 
     }

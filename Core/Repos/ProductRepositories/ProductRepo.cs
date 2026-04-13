@@ -1,4 +1,4 @@
-﻿using Data.AppDbContext;
+﻿using Data.ApplicationDbContext;
 using Data.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -97,8 +97,7 @@ namespace Core.Repos.ProductRepositories
         public async Task<IEnumerable<Product>> GetByColourAsync(string colour)
         {
             return await _context.Products
-                .AsNoTracking()
-                .Where(p => p.Colour.Equals(colour, StringComparison.OrdinalIgnoreCase))
+                .AsNoTracking().Where(p => p.Colour.ToLower() == colour.Trim().ToLower())
                 .ToListAsync();
         }
 

@@ -4,7 +4,7 @@ using Data.Models.AuditAndSoftDeleteModels;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace Data.AppDbContext
+namespace Data.ApplicationDbContext
 {
     public class AppDbContext : DbContext
     {
@@ -43,7 +43,7 @@ namespace Data.AppDbContext
                 entity.Property(e => e.LastName).HasMaxLength(50);
                 entity.Property(e => e.Username).HasMaxLength(50);
                 entity.Property(e => e.PhoneNumber).HasMaxLength(20);
-                entity.Property(e => e.LastLoginAt).IsRequired();
+                entity.Property(e => e.LastLoginAt);
                 entity.Property(e => e.IsActive).IsRequired().HasDefaultValue(true);
                 entity.Property(e => e.IsDeleted).IsRequired().HasDefaultValue(false);
             });
@@ -59,6 +59,7 @@ namespace Data.AppDbContext
                 entity.Property(e => e.Description).HasMaxLength(1500).IsRequired();
                 entity.Property(e => e.Price).HasPrecision(18, 2).IsRequired();
                 entity.Property(e => e.StockQuantity).IsRequired();
+                entity.Property(e => e.ImageUrl).HasMaxLength(255);
                 entity.Property(e => e.IsActive).IsRequired().HasDefaultValue(true);
                 entity.Property(e => e.IsDeleted).IsRequired().HasDefaultValue(false);
             });

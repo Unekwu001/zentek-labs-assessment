@@ -5,6 +5,8 @@ using Api.Startup.Swagger;
 using Asp.Versioning;
 using Core.Repos.ProductRepositories;
 using Core.Repos.UserRepositories;
+using Core.Services.ProductServices;
+using Core.Services.UserServices;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Net.Http.Headers;
@@ -46,7 +48,9 @@ namespace Api.ProgramSetup.DI
             services.AddApplicationDbContext(configuration);
             services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
             services.AddScoped<IProductRepo, ProductRepo>();
+            services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IUserRepo, UserRepo>();
+            services.AddScoped<IUserService, UserService>();
             services.AddSwaggerWithJwt();
             services.AddJwtAuthentication(configuration);
             services.AddAuthorization();

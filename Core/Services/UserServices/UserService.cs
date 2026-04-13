@@ -59,7 +59,7 @@ namespace Core.Services.UserServices
             var user = await _userRepo.GetByEmailAsync(dto.Email);
 
             if (user == null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
-                throw new Exception("Invalid email or password");
+                throw new ValidationException("Invalid email or password");
 
             return new AuthResponseDto
             {

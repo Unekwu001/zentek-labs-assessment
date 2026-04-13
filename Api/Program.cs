@@ -1,9 +1,12 @@
 using Api.ProgramSetup.DI;
+using Api.Startup.DbSetup;
+using Api.Startup.SerilogSetup;
 using Asp.Versioning.ApiExplorer;
-
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddSerilogSetup();
 builder.Services.SetupDependencyInjection(builder.Configuration);
 builder.Services.AddAuthorization();
 
@@ -25,11 +28,12 @@ app.UseSwaggerUI(options =>
 
     options.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
 });
-
+app.UseSerilogRequestLoggingSetup();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+app.ApplyDatabaseMigrations();
 
 app.Run();

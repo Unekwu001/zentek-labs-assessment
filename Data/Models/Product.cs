@@ -10,7 +10,10 @@ namespace Data.Models
         public required string Name { get; set; }
         public required string Colour { get; set; }
         public required decimal Price { get; set; }
+        public required string CurrencyCode { get; set; }
         public required string Description { get; set; }
         public int StockQuantity { get; set; } 
+        public string? ImageUrl { get; set; } 
+        public Guid SellerId {  get; set; }
     }
 }
