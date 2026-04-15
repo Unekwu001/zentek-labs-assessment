@@ -9,4 +9,5 @@
     <Build />
     <Deploy />
   </Project>
+  <Project Path="UnitTests/UnitTests.csproj" Id="44ec7f91-afb2-4d3b-b964-778657bf697c" />
 </Solution>
