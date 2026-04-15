@@ -21,8 +21,8 @@ public class UploadService : IUploadService
         _logger = logger;
 
         _s3Client = new AmazonS3Client(
-            _awsSettings.AccessKey,
-            _awsSettings.SecretKey,
+           /* _awsSettings.AccessKey ??*/ "AKIAQEBEET7K3CIGYXK2",//TODO: I will fetch dynamically from aws secret manager
+            /*_awsSettings.SecretKey?? */"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",//TODO: I will fetch dynamically from aws secret manager
             RegionEndpoint.GetBySystemName(_awsSettings.Region)
         );
     }

@@ -1,15 +1,20 @@
+using Amazon;
+using Amazon.SecretsManager;
+using Amazon.SecretsManager.Model;
 using Api.ProgramSetup.DI;
 using Api.Startup.DbSetup;
 using Api.Startup.SerilogSetup;
 using Asp.Versioning.ApiExplorer;
 using Serilog;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddSerilogSetup();
+
+
 builder.Services.SetupDependencyInjection(builder.Configuration);
 builder.Services.AddAuthorization();
-
 
 var app = builder.Build();
 

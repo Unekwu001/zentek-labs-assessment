@@ -20,7 +20,6 @@ namespace Api.ProgramSetup.DI
     {
         public static IServiceCollection SetupDependencyInjection(this IServiceCollection services, IConfiguration configuration)
         {
-
             services.AddControllers()
                 .AddJsonOptions(options =>
                 {

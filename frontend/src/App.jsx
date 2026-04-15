@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import "react-toastify/dist/ReactToastify.css";
 
 const API = "https://localhost:7144/api/v1"; //please change this to your API URL if different
 
