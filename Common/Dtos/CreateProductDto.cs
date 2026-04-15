@@ -16,6 +16,6 @@ namespace Common.Dtos
         [Required]
         public string Colour { get; set; } = string.Empty;
         [Required]
-        public string? ImageUrl { get; set; }
+        public string? Base64String { get; set; }
     }
 }

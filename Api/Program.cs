@@ -28,6 +28,8 @@ app.UseSwaggerUI(options =>
 
     options.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
 });
+
+app.UseCors("AllowFrontend");
 app.UseSerilogRequestLoggingSetup();
 app.UseHttpsRedirection();
 

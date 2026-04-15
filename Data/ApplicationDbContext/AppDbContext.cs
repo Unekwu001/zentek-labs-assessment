@@ -59,7 +59,7 @@ namespace Data.ApplicationDbContext
                 entity.Property(e => e.Description).HasMaxLength(1500).IsRequired();
                 entity.Property(e => e.Price).HasPrecision(18, 2).IsRequired();
                 entity.Property(e => e.StockQuantity).IsRequired();
-                entity.Property(e => e.ImageUrl).HasMaxLength(255);
+                entity.Property(e => e.ImageUrl).HasMaxLength(2500);
                 entity.Property(e => e.IsActive).IsRequired().HasDefaultValue(true);
                 entity.Property(e => e.IsDeleted).IsRequired().HasDefaultValue(false);
             });

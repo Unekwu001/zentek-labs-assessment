@@ -3,6 +3,7 @@ using System;
 using Data.ApplicationDbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260415091822_Base64ImageString")]
+    partial class Base64ImageString
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.5");
@@ -21,6 +24,10 @@ namespace Data.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Base64ImageString")
+                        .HasMaxLength(2500)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Colour")
@@ -46,10 +53,6 @@ namespace Data.Migrations
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(1500)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ImageUrl")
-                        .HasMaxLength(2500)
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("IsActive")

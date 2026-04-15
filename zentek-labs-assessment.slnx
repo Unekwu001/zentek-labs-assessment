@@ -1,6 +1,12 @@
 <Solution>
-  <Project Path="Api/Api.csproj" />
-  <Project Path="Common/Common.csproj" Id="7f55cfaa-ec22-4d8d-86d4-213ae83684de" />
-  <Project Path="Core/Core.csproj" Id="afaf4028-f8cc-4d23-a774-b4160a757d52" />
-  <Project Path="Data/Data.csproj" Id="8c33d21f-6a73-414d-858e-a15c89aae98f" />
+  <Folder Name="/Backend/">
+    <Project Path="Api/Api.csproj" />
+    <Project Path="Common/Common.csproj" Id="7f55cfaa-ec22-4d8d-86d4-213ae83684de" />
+    <Project Path="Core/Core.csproj" Id="afaf4028-f8cc-4d23-a774-b4160a757d52" />
+    <Project Path="Data/Data.csproj" Id="8c33d21f-6a73-414d-858e-a15c89aae98f" />
+  </Folder>
+  <Project Path="Frontend/frontend.esproj">
+    <Build />
+    <Deploy />
+  </Project>
 </Solution>

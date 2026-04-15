@@ -1,5 +1,6 @@
 ﻿using Common.Dtos;
 using Core.Repos.ProductRepositories;
+using Core.Services.UploadServices;
 using Data.Models;
 using Microsoft.Extensions.Logging;
 using System.ComponentModel.DataAnnotations;
@@ -10,11 +11,13 @@ namespace Core.Services.ProductServices
     {
         private readonly IProductRepo _productRepo;
         private readonly ILogger<ProductService> _logger;
+        private readonly IUploadService _uploadService;  
 
-        public ProductService(IProductRepo productRepo, ILogger<ProductService> logger)
+        public ProductService(IProductRepo productRepo, ILogger<ProductService> logger, IUploadService uploadService)
         {
             _productRepo = productRepo;
             _logger = logger;
+            _uploadService = uploadService;
         }
 
 
@@ -27,6 +30,12 @@ namespace Core.Services.ProductServices
 
             if (dto.StockQuantity < 0)
                 throw new ValidationException("Stock cannot be negative");
+            string imageUrl = string.Empty;
+
+            if (!string.IsNullOrWhiteSpace(dto.Base64String))
+            {
+                imageUrl = await _uploadService.UploadBase64ImageAsync(dto.Base64String);
+            }
 
             var product = new Product
             {
@@ -35,7 +44,7 @@ namespace Core.Services.ProductServices
                 Price = dto.Price,
                 StockQuantity = dto.StockQuantity,
                 Colour = dto.Colour ?? string.Empty,
-                ImageUrl = dto.ImageUrl ?? string.Empty,
+                ImageUrl = imageUrl ?? string.Empty,
                 SellerEmail = sellerEmail,
                 CurrencyCode = "USD",
                 SellerId = sellerId
